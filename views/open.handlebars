@@ -1,0 +1,78 @@
+<div class="contenido-superior vacante contenedor">
+    <div class="caja">
+        <p class="etiqueta">Company</p>
+        <p class="nombre">{{opening.company}}</p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Location</p>
+        <p class="nombre">{{opening.location}}</p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Term</p>
+        <p class="nombre contrato">{{opening.term}}</p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Salary</p>
+        <p class="nombre">$ {{opening.salary}}</p>
+    </div>
+</div>
+
+<div class="vacante-contenedor contenedor">
+    <main class="contenido">
+        <h2>Position Description</h2>
+        <div class="vacante-descripcion">
+            {{{opening.description}}}
+        </div>
+
+        <a href="/openings/edit/{{opening.url}}" class="btn btn-azul editar-btn">Edit Open Position </a>
+
+    </main>
+    <aside class="sidebar">
+        <h2>Required Skills</h2>
+        <ul class="skills">
+            {{#each opening.skills}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </aside>
+</div>
+
+<div class="contenedor datos-reclutador">
+    <div class="enviar-datos">
+        <h2>Contact Recruiter</h2>
+        <p>Please fill the form, upload your resume and we will soon contact you !!</p>
+
+        <form method="POST" action="/openings/{{opening.url}}" class="default-form" enctype="multipart/form-data">
+            <div class="campo">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Your name here">
+            </div>
+            <div class="campo">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Your email here">
+            </div>
+            <div class="campo">
+                <label>Phone</label>
+                <input type="number" name="phone" placeholder="Your Phone # here">
+            </div>
+            <div class="campo">
+                <label>Resume (PDF)</label>
+                <input type="file" name="cv">
+            </div>
+            <div class="campo">               
+                <input type="submit" class="btn btn-verde" value="Send">
+            </div>
+        </form>
+    </div>
+
+    <div class="info-reclutador">
+        <h2>Recruiter Information</h2>
+        {{#if opening.author.name}}
+            <p>{{opening.author.name}}</p>
+        {{/if}}
+        {{#if opening.author.image}}
+            <img src="/uploads/profiles/{{opening.author.image}}">
+        {{/if}}
+        
+    </div>
+</div>

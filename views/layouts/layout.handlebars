@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/trix.css">
+	<link rel="stylesheet" href="/css/app.css">
+	<title>{{pageName}}</title>
+</head>
+<body>
+
+	<div class="nombre-sitio contenedor">
+		<h1>
+			<a href="/">Searching Jobs</a>
+		</h1>
+
+		{{#if barra}}
+			<div class="buscador">
+				<form action="/search" method="POST">
+					<input type="text" name="q" class="buscar">
+					<input type="submit" value="Search">
+				</form>
+			</div>
+		{{/if}}
+
+		{{#if closeLogout}}
+			<div class="cerrar-sesion">
+				<p>Hola {{name}}</p>
+				{{#if image}}
+					<img src="/uploads/profiles/{{image}}" class="admin-perfil">
+				{{/if}}
+				<a href="/administration">Administration</a>
+				<a href="/logout">Logout</a>
+			</div>
+		{{/if}}
+	</div>
+
+	<header class="site-header contenedor separador">
+		<h2>{{pageName}}</h2>
+		{{#if tagline}}
+			<p class="tagline">{{tagline}}</p>
+		{{/if}}
+
+		{{#if boton}}
+			<a href="/openings/new" class="btn btn-azul">Public New Opening</a>
+		{{/if}}
+	</header>
+
+	<div class="contenido-principal contenedor">
+		{{#if messages}}
+			<div class="alertas">
+				{{#showAlerts messages}}
+				{{/showAlerts}}
+			</div>
+		{{/if}}
+		{{{body}}}
+	</div>
+	
+	<script src="/js/trix.js"></script>
+	<script src="/dist/bundle.js"></script>
+</body>
+</html>

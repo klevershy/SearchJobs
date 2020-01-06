@@ -1,0 +1,38 @@
+<main class="lista-vacantes">
+    <h2>Search</h2>
+    <div class="botones separador">
+        <a href="/edit-profile" class="btn btn-azul">Edit Profile</a>
+        <a href="/openings/new" class="btn btn-verde">New Open Position</a>
+    </div>
+
+    <h2>Your Opening Positions</h2>
+
+    <div class="panel-administracion">
+        {{#if openings.length}}
+            {{#each openings}}
+                <div class="vacante ">
+                    <div class="caja">
+                        <h3>{{company}}</h3>
+                        <p class="puesto">{{titulo}}</p>
+                        <p class="candidatos">
+                            {{candidates.length }} - Candidate(s)
+                        </p>
+                    </div>
+                    <div class="centrar-vertical caja">
+                        <a href="/candidates/{{id}}" class="btn btn-amarillo">Candidates</a>
+                    </div>
+
+                    <div class="centrar-vertical caja">
+                        <a href="/openings/edit/{{url}}" class="btn btn-verde">Edit</a>
+                    </div>
+
+                    <div class="centrar-vertical caja">
+                        <a href="#" data-delete={{id}} class="btn btn-rojo">Delete</a>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <p>No Openings, create one</p>
+        {{/if}}
+    </div>
+</main>
